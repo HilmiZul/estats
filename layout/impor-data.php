@@ -461,6 +461,7 @@ if (isset($_POST['upload'])) {
   <div class="col-md-6">
     <div class="card ">
       <div class="content">
+        <?php print $msg ?>
         <div class="alert alert-info">
           Tipe berkas yang diijinkan adalah <strong>.XLS</strong>. Jika berkas bertipe <strong>.XLSX</strong>,
           silahkan ubah dengan cara:
