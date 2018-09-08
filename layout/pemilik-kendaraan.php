@@ -2,7 +2,7 @@
   <div class="col-md-12">
     <div class="card">
       <div class="header">
-        <button type="button" data-toggle="modal" data-target="#impor" class="btn btn-primary">
+        <button type="button" data-toggle="modal" data-target="#impor" class="btn btn-biru">
           <i class="ti-import"></i> Import .XLS
         </button>
       </div>
