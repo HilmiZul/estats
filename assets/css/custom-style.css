@@ -4,14 +4,24 @@
  * ESK2
  */
 
+html {
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  width: 100%;
+  height: 100%;
+}
 
  /* SECTION LOGIN */
  .login {
    padding-top: 90px;
    width: 100%;
    height: 100%;
+   display: table;
    background-size: cover;
-   background-color: #fff;
+   background: rgba(70, 70, 70, .1) url('../img/bg-login.png') bottom left no-repeat;
  }
 
  .login .card .content {
