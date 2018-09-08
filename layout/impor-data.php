@@ -462,7 +462,7 @@ if (isset($_POST['upload'])) {
     <div class="card ">
       <div class="content">
         <?php print $msg ?>
-        <div class="alert alert-info">
+        <div class="alert alert-grey">
           Tipe berkas yang diijinkan adalah <strong>.XLS</strong>. Jika berkas bertipe <strong>.XLSX</strong>,
           silahkan ubah dengan cara:
           <ol>
@@ -476,7 +476,7 @@ if (isset($_POST['upload'])) {
             <label for="pilih">PILIH BERKAS .XLS</label>
             <input type="file" accept="application/vnd.ms-excel" class="form-control" name="berkas" id="pilih" required>
           </div>
-          <button type="submit" class="btn btn-info" name="upload"><i class="ti-import"></i> Import</button>
+          <button type="submit" class="btn btn-biru" name="upload"><i class="ti-import"></i> Import</button>
         </form>
       </div>
     </div>
