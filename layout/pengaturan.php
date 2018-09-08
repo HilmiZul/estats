@@ -3,13 +3,14 @@ if (isset($_POST['simpan'])) {
   $pass_sekarang = $_POST['password_sekarang'];
   $pass_baru = $_POST['password_baru'];
   $re_pass_baru = $_POST['re_password_baru'];
+  $uid = $_POST['uid'];
 
   $q_pass_curr = mysqli_query($conn, "select passwd from tb_users
                 where passwd=SHA1('$pass_sekarang')");
   $cek_pass_curr = mysqli_num_rows($q_pass_curr);
   if ($cek_pass_curr > 0) {
     if ($pass_baru == $re_pass_baru) {
-      mysqli_query($conn, "update tb_users set passwd=sha1('$pass_baru')");
+      mysqli_query($conn, "update tb_users set passwd=sha1('$pass_baru') where uid=$uid");
       $msg = "<div class='alert alert-success'>Password Berhasil diperbaharui!</div>";
     } else {
       $msg = "<div class='alert alert-danger'>Password baru tidak sama!</div>";
@@ -37,6 +38,7 @@ if (isset($_POST['simpan'])) {
           <div class="form-group">
             <input type="password" class="form-control" name="re_password_baru" placeholder="Ketik ulang password sekarang" required>
           </div>
+          <input type="hidden" name="uid" value="<?php print $_SESSION['uid']?>">
           <button type="submit" class="btn btn-biru" name="simpan"><i class="ti-save"></i> Simpan</button>
         </form>
       </div>
