@@ -25,16 +25,22 @@ if (isset($_POST['masuk'])) {
     <div class="row">
       <div class="col-md-4 col-md-offset-4">
         <h3 class="text-center">Login.</h3>
-        <?php print $msg; ?>
-        <form action="" method="post">
-          <div class="form-group">
-            <input type="text" class="form-control" name="uname" placeholder="Username" required autofocus>
+        <div class="card">
+          <div class="content">
+            <?php print $msg; ?>
+            <form action="" method="post">
+              <div class="form-group">
+                <input type="text" class="form-control" name="uname" placeholder="Username" required autofocus>
+              </div>
+              <div class="form-group">
+                <input type="password" class="form-control" name="passwd" placeholder="Password" required>
+              </div>
+              <div class="form-group">
+                <button type="submit" class="btn btn-biru" name="masuk"><i class="fa fa-sign-in"></i> Masuk</button>
+              </button>
+            </form>
           </div>
-          <div class="form-group">
-            <input type="password" class="form-control" name="passwd" placeholder="Password" required>
-          </div>
-          <button type="submit" class="btn btn-primary" name="masuk"><i class="fa fa-sign-in"></i> Masuk</button>
-        </form>
+        </div>
       </div>
     </div>
   </div>
