@@ -47,7 +47,7 @@
       </div>
       <div class="content">
         <div class="alert alert-warning">Impor Data Pemilik Kendaraan dari berkas <strong>.XLS</strong></div>
-        <form action="?nav=pemilik-kendaraan" method="post" enctype="multipart/form-data">
+        <form action="?nav=impor-data" method="post" enctype="multipart/form-data">
           <div class="form-group">
             <label for="pilih">PILIH BERKAS .XLS</label>
             <input type="file" accept="application/vnd.ms-excel" class="form-control" name="berkas" id="pilih" required>
