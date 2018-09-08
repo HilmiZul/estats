@@ -11,7 +11,6 @@
   <meta name="viewport" content="width=device-width" />
 
   <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
-  <link href="assets/css/animate.min.css" rel="stylesheet"/>
   <link href="assets/css/paper-dashboard.css" rel="stylesheet"/>
 
   <link href="plugin/dataTables/css/dataTables.bootstrap.css" rel="stylesheet"/>
