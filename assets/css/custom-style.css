@@ -1,0 +1,15 @@
+/*
+ * custom-style.css
+ * 8 September 2018
+ * ESK2
+ */
+
+.form-control {
+  font-size: 17px;
+  background-color: transparent;
+  border-bottom: 2px solid #afafaf;
+}
+
+.form-control:focus {
+  border-bottom: 2px solid #7A9E9F;
+}

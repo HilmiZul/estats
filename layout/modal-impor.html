@@ -1,0 +1,30 @@
+<div class="modal fade" id="impor">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Impor Data</h4>
+      </div>
+      <form action="" enctype="multipart/form-data" method="post">
+        <div class="modal-body">
+          <div class="alert alert-info">
+            Tipe berkas yang diijinkan adalah <strong>.XLS</strong>. Jika berkas bertipe <strong>.XLSX</strong>,
+            silahkan ubah dengan cara:
+            <ol>
+              <li>Buka berkas menggunakan Ms.Excel</li>
+              <li><em>Save as...</em></li>
+              <li>Pilih tipe <strong>.XLS</strong></li>
+            </ol>
+          </div>
+          <div class="form-group">
+            <label for="berkas">PILIH BERKAS</label>
+            <input type="file" accept="application/vnd.ms-excel" class="form-control" name="berkas" id="berkas" required autofocus>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-primary" name="upload"><i class="ti-import"></i> Impor</button>
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Batal</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
