@@ -7,7 +7,7 @@ while ($row = mysqli_fetch_array($q)) {
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header text-center">
-          <h4>Banyaknya Kendaraan di <?php print $row['nama']?></h4>
+          <h4>Dominan Kendaraan di <?php print $row['nama']?></h4>
         </div>
         <div class="modal-body">
           <table class="table table-hover">
