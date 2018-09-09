@@ -1,7 +1,7 @@
 <div class="row">
   <div class="col-md-12">
     <div class="card">
-      <div class="header">
+      <div class="header alert alert-grey">
         <button type="button" data-toggle="modal" data-target="#impor" class="btn btn-biru pull-right">
           <i class="ti-import"></i> Import .XLS
         </button>
@@ -9,8 +9,8 @@
           <div class="col-md-3">
             <form action="" method="post">
               <div class="form-group">
-                <label for="">FILTER BERDASARKAN BULAN</label>
-                <select class="form-control selectpicker" data-live-search="true" name="bulan">
+                <label for="bulan">FILTER BERDASARKAN BULAN</label>
+                <select id="bulan" class="form-control selectpicker" data-live-search="true" name="bulan" onchange='if(this.value != 0) { this.form.submit(); }'>
                   <option value="1">Januari</option>
                   <option value="2">Februari</option>
                   <option value="3">Maret</option>
