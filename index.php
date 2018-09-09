@@ -24,6 +24,7 @@ include 'layout/head.php';
     </div>
   <?php
   include 'layout/modal-impor.html';
+  include 'layout/modal-stats.php';
   }
   ?>
 </div>
