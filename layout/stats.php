@@ -3,7 +3,8 @@
     <div class="card card-plain">
       <div class="content">
         <div class="alert alert-grey">
-          Klik salah satu wilayah untuk melihat rincian.
+          <h4>Peta Kabupaten Karawang</h4>
+          <p><em>Klik salah satu wilayah (kecamatan) untuk melihat rincian.</em></p>
         </div>
         <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="isolation:isolate" viewBox="0 0 700 900" width="700" height="900">
           <defs>
