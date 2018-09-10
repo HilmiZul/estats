@@ -4,11 +4,24 @@
 <script src="plugin/dataTables/js/dataTables.bootstrap.js"></script>
 <script src="plugin/dataTables/js/dataTables.responsive.js"></script>
 <script type="text/javascript" src="assets/bs-select/dist/js/bootstrap-select.min.js"></script>
+<script type="text/javascript" src="plugin/tooltipster/js/tooltipster.bundle.js"></script>
+<script type="text/javascript" src="plugin/tooltipster/js/tooltipster-follower.min.js"></script>
+<script type="text/javascript" src="plugin/svg/svg.min.js"></script>
+<script type="text/javascript" src="plugin/screenbox/svg.screenbbox.js"></script>
 
 <script type="text/javascript">
 $(document).ready(function(){
+  // DATATABLES.PEM.KENDARAAN
   $('#dataTables').DataTable({
       responsive: true
+  });
+
+  // TOOLTIP.UNTUK.DETIL.STATS
+  $('.tooltip').tooltipster({
+    theme: 'tooltipster-shadow',
+    plugins: ['follower'],
+    anchor: 'top-left',
+    offset: [20, -20]
   });
 });
 </script>
