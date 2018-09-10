@@ -19,7 +19,6 @@
   <link href="assets/css/style.css" rel="stylesheet" />
 
   <link href="assets/css/themify-icons.css" rel="stylesheet">
-  <link rel="stylesheet" href="assets/bs-select/dist/css/bootstrap-select.min.css">
 
   <link rel="stylesheet" href="plugin/tooltipster/css/tooltipster.bundle.css">
   <link rel="stylesheet" href="plugin/tooltipster/css/tooltipster-follower.min.css">
