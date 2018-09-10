@@ -1,3 +1,12 @@
+<?php
+if (isset($_POST['bulan'])) {
+  $bulan = $_POST['bulan'];
+  $selected = "selected";
+  $q = mysqli_query($conn, "select * from tb_pemilik_kendaraan where month(tgl_bayar)='$bulan' order by kecamatan, merek asc");
+} else {
+  $q = mysqli_query($conn, "select * from tb_pemilik_kendaraan order by kecamatan, merek asc");
+}
+?>
 <div class="row">
   <div class="col-md-12">
     <div class="card">
@@ -11,18 +20,18 @@
               <div class="form-group">
                 <label for="bulan">FILTER BERDASARKAN BULAN</label>
                 <select id="bulan" class="form-control selectpicker" data-live-search="true" name="bulan" onchange='if(this.value != 0) { this.form.submit(); }'>
-                  <option value="1">Januari</option>
-                  <option value="2">Februari</option>
-                  <option value="3">Maret</option>
-                  <option value="4">April</option>
-                  <option value="5">Mei</option>
-                  <option value="6">Juni</option>
-                  <option value="7">Juli</option>
-                  <option value="8">Agustus</option>
-                  <option value="9">September</option>
-                  <option value="10">Oktober</option>
-                  <option value="11">November</option>
-                  <option value="12">December</option>
+                  <option value="1" <?php if ($bulan=='1') { print $selected; } ?>>Januari</option>
+                  <option value="2" <?php if ($bulan=='2') { print $selected; } ?>>Februari</option>
+                  <option value="3" <?php if ($bulan=='3') { print $selected; } ?>>Maret</option>
+                  <option value="4" <?php if ($bulan=='4') { print $selected; } ?>>April</option>
+                  <option value="5" <?php if ($bulan=='5') { print $selected; } ?>>Mei</option>
+                  <option value="6" <?php if ($bulan=='6') { print $selected; } ?>>Juni</option>
+                  <option value="7" <?php if ($bulan=='7') { print $selected; } ?>>Juli</option>
+                  <option value="8" <?php if ($bulan=='8') { print $selected; } ?>>Agustus</option>
+                  <option value="9" <?php if ($bulan=='9') { print $selected; } ?>>September</option>
+                  <option value="10" <?php if ($bulan=='10') { print $selected; } ?>>Oktober</option>
+                  <option value="11" <?php if ($bulan=='11') { print $selected; } ?>>November</option>
+                  <option value="12" <?php if ($bulan=='12') { print $selected; } ?>>December</option>
                 </select>
               </div>
             </form>
@@ -40,7 +49,6 @@
           </thead>
           <tbody>
           <?php
-          $q = mysqli_query($conn, "select * from tb_pemilik_kendaraan order by kecamatan, merek asc");
           $no = 0;
           while($row = mysqli_fetch_array($q)) {
             $no++;
