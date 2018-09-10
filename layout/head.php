@@ -21,6 +21,9 @@
   <link href="assets/css/themify-icons.css" rel="stylesheet">
   <link rel="stylesheet" href="assets/bs-select/dist/css/bootstrap-select.min.css">
 
+  <link rel="stylesheet" href="plugin/tooltipster/css/tooltipster.bundle.css">
+  <link rel="stylesheet" href="plugin/tooltipster/css/tooltipster-follower.min.css">
+
   <link href="assets/fa/css/fa.min.css" rel="stylesheet">
   <link href="assets/css/custom-style.css" rel="stylesheet">
 </head>
