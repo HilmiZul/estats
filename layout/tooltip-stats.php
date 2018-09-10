@@ -18,7 +18,8 @@ while ($row = mysqli_fetch_array($q)) {
         <tbody>
         <?php
         $q_detil_map = mysqli_query($conn, "select kecamatan, merek, count(merek) as jumlah from tb_pemilik_kendaraan
-                       where kecamatan='".$row['nama']."'
+                       where kecamatan='".$row['nama']."' and
+                       month(tgl_bayar)='$bulan'
                        group by merek
                        order by jumlah desc");
         $count = mysqli_num_rows($q_detil_map);
