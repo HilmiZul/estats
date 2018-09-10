@@ -15,11 +15,13 @@ $(document).ready(function(){
   });
 
   // TOOLTIP.UNTUK.DETIL.STATS
-  $('.tooltip').tooltipster({
-    theme: 'tooltipster-shadow',
-    plugins: ['follower'],
-    anchor: 'top-left',
-    offset: [20, -20]
-  });
+  for(var i=0; i<30; i++) {
+    $('#tooltip-'+i).tooltipster({
+      theme: 'tooltipster-shadow',
+      plugins: ['follower'],
+      anchor: 'top-left',
+      offset: [20, -20]
+    });
+  }
 });
 </script>
