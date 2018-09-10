@@ -24,9 +24,10 @@ include 'layout/head.php';
     </div>
   <?php
     if ($_GET['nav'] == 'stats') {
-      include 'layout/modal-stats.php';
+      include 'layout/tooltip-stats.php';
+    } elseif ($_GET['nav'] == 'pemilik-kendaraan') {
+      include 'layout/modal-impor.html';
     }
-    include 'layout/modal-impor.html';
   } // END.ELSE.SESSION.GA.KOSONG
   ?>
 </div>
