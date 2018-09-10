@@ -4,14 +4,23 @@
  * ESK2
  */
 
+@font-face {
+  src: url('../font/Quicksand-Regular.ttf');
+  font-family: 'Quicksand';
+  font-weight: normal;
+  font-style: normal;
+}
+
 html {
   width: 100%;
   height: 100%;
+  font-family: 'Quicksand';
 }
 
 body {
   width: 100%;
   height: 100%;
+  font-family: 'Quicksand';
 }
 
  /* SECTION LOGIN */
@@ -69,4 +78,18 @@ body {
   color: rgb(255, 255, 255);
   border-color: transparent;
   background-color: rgba(255, 30, 30, .5);
+}
+
+.peta {
+  width: 100%;
+  margin-top: 0;
+}
+
+.peta-svg {
+  position: absolute;
+  width: 100%;
+}
+
+.tooltip_templates {
+  display: none;
 }
