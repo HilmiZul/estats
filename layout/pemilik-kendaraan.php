@@ -5,6 +5,8 @@ if (isset($_POST['bulan'])) {
   $q = mysqli_query($conn, "select * from tb_pemilik_kendaraan where month(tgl_bayar)='$bulan' order by kecamatan, merek asc");
 } else {
   $q = mysqli_query($conn, "select * from tb_pemilik_kendaraan order by kecamatan, merek asc");
+  $bulan = "";
+  $selected = "";
 }
 ?>
 <div class="row">
@@ -18,8 +20,9 @@ if (isset($_POST['bulan'])) {
           <div class="col-md-3">
             <form action="" method="post">
               <div class="form-group">
-                <label for="bulan">FILTER BERDASARKAN BULAN</label>
-                <select id="bulan" class="form-control selectpicker" data-live-search="true" name="bulan" onchange='if(this.value != 0) { this.form.submit(); }'>
+                <label >FILTER BERDASARKAN BULAN</label>
+                <select class="form-control" name="bulan" onchange='if(this.value != 0) { this.form.submit(); }'>
+                  <option value="">-----</option>
                   <option value="1" <?php if ($bulan=='1') { print $selected; } ?>>Januari</option>
                   <option value="2" <?php if ($bulan=='2') { print $selected; } ?>>Februari</option>
                   <option value="3" <?php if ($bulan=='3') { print $selected; } ?>>Maret</option>
