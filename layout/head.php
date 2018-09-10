@@ -18,10 +18,9 @@
 
   <link href="assets/css/style.css" rel="stylesheet" />
 
-  <link href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
-  <link href='https://fonts.googleapis.com/css?family=Muli:400,300' rel='stylesheet' type='text/css'>
   <link href="assets/css/themify-icons.css" rel="stylesheet">
   <link rel="stylesheet" href="assets/bs-select/dist/css/bootstrap-select.min.css">
 
+  <link href="assets/fa/css/fa.min.css" rel="stylesheet">
   <link href="assets/css/custom-style.css" rel="stylesheet">
 </head>
