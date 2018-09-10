@@ -23,9 +23,11 @@ include 'layout/head.php';
         <?php include 'layout/footer.html'; ?>
     </div>
   <?php
-  include 'layout/modal-impor.html';
-  include 'layout/modal-stats.php';
-  }
+    if ($_GET['nav'] == 'stats') {
+      include 'layout/modal-stats.php';
+    }
+    include 'layout/modal-impor.html';
+  } // END.ELSE.SESSION.GA.KOSONG
   ?>
 </div>
 
