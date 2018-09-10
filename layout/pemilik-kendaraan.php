@@ -4,7 +4,7 @@ if (isset($_POST['bulan'])) {
   $selected = "selected";
   $q = mysqli_query($conn, "select * from tb_pemilik_kendaraan where month(tgl_bayar)='$bulan' order by kecamatan, merek asc");
 } else {
-  $q = mysqli_query($conn, "select * from tb_pemilik_kendaraan order by kecamatan, merek asc");
+  $q = mysqli_query($conn, "select * from tb_pemilik_kendaraan order by kecamatan, merek asc limit 0,100");
   $bulan = "";
   $selected = "";
 }
