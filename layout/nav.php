@@ -18,7 +18,7 @@
               print "<span class='navbar-brand'>Impor Data</span>";
             }
             elseif ($_GET['nav'] == 'stats') {
-              print "<span class='navbar-brand'>Stats</span>";
+              print "<span class='navbar-brand'>Statistik</span>";
             }
             elseif ($_GET['nav'] == 'pengaturan') {
               if ($_GET['sunting'] == 'true') {

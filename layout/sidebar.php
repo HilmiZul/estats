@@ -48,7 +48,7 @@ elseif ($_GET['nav'] == 'pengaturan') {
         <li class="<?php print $stats_active?>">
           <a href="?nav=stats">
             <i class="ti-map-alt"></i>
-            <p>Stats</p>
+            <p>Statistik</p>
           </a>
         </li>
         <li class="<?php print $pengaturan_active?>">
