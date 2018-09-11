@@ -5,9 +5,7 @@ while ($row = mysqli_fetch_array($q)) {
   ?>
   <div class="tooltip_templates">
     <span id="<?php print $nama?>">
-      <div class="alert alert-grey">
-        <h5 class="title text-center"><?php print $row['nama']?></h5>
-      </div>
+      <h5 class="title text-center"><?php print $row['nama']?></h5>
       <table class="table table-hover">
         <tbody>
         <?php
