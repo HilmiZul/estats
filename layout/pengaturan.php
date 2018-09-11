@@ -32,10 +32,10 @@ if (isset($_POST['simpan'])) {
             <input type="password" class="form-control" name="password_sekarang" placeholder="Ketik password sekarang" autofocus required>
           </div>
           <div class="form-group">
-            <input type="password" class="form-control" name="password_baru" placeholder="Ketik password sekarang" required>
+            <input type="password" class="form-control" name="password_baru" placeholder="Ketik password baru" required>
           </div>
           <div class="form-group">
-            <input type="password" class="form-control" name="re_password_baru" placeholder="Ketik ulang password sekarang" required>
+            <input type="password" class="form-control" name="re_password_baru" placeholder="Ketik ulang password baru" required>
           </div>
           <button type="submit" class="btn btn-biru" name="simpan"><i class="ti-save"></i> Simpan</button>
         </form>
