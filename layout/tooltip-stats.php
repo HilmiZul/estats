@@ -6,20 +6,15 @@ while ($row = mysqli_fetch_array($q)) {
   <div class="tooltip_templates">
     <span id="<?php print $nama?>">
       <div class="alert alert-grey">
-        <h5 class="title text-center">KEC.<?php print $nama?></h5>
+        <h5 class="title text-center"><?php print $row['nama']?></h5>
       </div>
       <table class="table table-hover">
-        <thead>
-          <tr>
-            <th>MEREK</th>
-            <th>JUMLAH</th>
-          </tr>
-        </thead>
         <tbody>
         <?php
         $q_detil_map = mysqli_query($conn, "select kecamatan, merek, count(merek) as jumlah from tb_pemilik_kendaraan
                        where kecamatan='".$row['nama']."' and
-                       month(tgl_bayar)='$bulan'
+                       month(tgl_bayar)='$bulan' and
+                       year(tgl_bayar)='$tahun'
                        group by merek
                        order by jumlah desc");
         $count = mysqli_num_rows($q_detil_map);

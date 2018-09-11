@@ -474,7 +474,7 @@ if (isset($_POST['upload'])) {
         <form action="" method="post" enctype="multipart/form-data">
           <div class="form-group">
             <label for="pilih">PILIH BERKAS .XLS</label>
-            <input type="file" accept="application/vnd.ms-excel" class="form-control" name="berkas" id="pilih" required>
+            <input type="file" accept="application/vnd.ms-excel" class="btn btn-default" name="berkas" id="pilih" required>
           </div>
           <button type="submit" class="btn btn-biru" name="upload"><i class="ti-import"></i> Import</button>
         </form>

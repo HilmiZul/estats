@@ -23,7 +23,7 @@ if (isset($_POST['simpan'])) {
   <div class="col-md-6">
     <div class="card">
       <div class="header">
-        <h4 class="title">Sunting Katasandi</h4>
+        <h4 class="title"><i class="ti-unlock"></i> Sunting Katasandi</h4>
       </div>
       <div class="content">
         <?php print $msg;?>

@@ -93,3 +93,8 @@ body {
 .tooltip_templates {
   display: none;
 }
+
+.card .header,
+.card .header .title {
+  color: rgb(90, 90, 90);
+}
