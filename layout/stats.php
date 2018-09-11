@@ -32,7 +32,7 @@ if (isset($_POST['terapkan'])) {
     <div class="card">
       <div class="header">
         <h4 class="title">Peta Kabupaten Karawang</h4>
-        <p><em>Arahkan pointer kesalah satu wilayah (kecamatan) untuk melihat rincian.</em></p>
+        <p><em>Arahkan pointer ke salah satu wilayah (kecamatan) untuk melihat rincian.</em></p>
       </div>
       <div class="content">
         <!--<img src="assets/img/peta-karawang-border.svg" class="peta-svg">-->
