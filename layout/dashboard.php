@@ -38,7 +38,13 @@
         </div>
     </div>
 </div>-->
-
+<div class="row">
+  <div class="col-md-12">
+    <div class="alert alert-grey">
+      <h3 class="text-center"><em>Selamat Datang di Aplikasi Monitoring Pengguna Kendaraan Wilayah Kab.Karawang</em></h3>
+    </div>
+  </div>
+</div>
 <div class="row">
   <div class="col-md-6">
     <div class="card ">
