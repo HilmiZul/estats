@@ -15,7 +15,7 @@ if (isset($_POST['terapkan'])) {
   $peta = mysqli_fetch_array($q_max);
   // END.NYARI.NILAI.TERTINGGI
 
-  $dominan = true;
+  $dominan = mysqli_num_rows($q_max);
 
   $q = mysqli_query($conn, "select * from tb_pemilik_kendaraan
                     where month(tgl_bayar)='$bulan' and year(tgl_bayar)='$tahun'
@@ -211,7 +211,7 @@ if (isset($_POST['terapkan'])) {
       </div>
       <div class="content">
       <?php
-      if ($dominan) { ?>
+      if ($dominan > 0) { ?>
         <table class="table table-hover">
           <thead>
             <tr>
