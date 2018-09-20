@@ -13,7 +13,12 @@ elseif ($_GET['nav'] == "impor-data") {
   include 'layout/impor-data.php';
 }
 elseif ($_GET['nav'] == "stats") {
-  include 'layout/stats.php';
+  if ($_GET['detil'] == 'true') {
+    include 'layout/stats-detil.php';
+  }
+  else {
+    include 'layout/stats.php';
+  }
 }
 elseif ($_GET['nav'] == "pengaturan") {
   if ($_GET['sunting'] == 'true') {

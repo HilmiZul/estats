@@ -12,24 +12,24 @@ include 'layout/head.php';
   include 'layout/sidebar.php';
   ?>
     <div class="main-panel">
-        <?php
-        include 'layout/nav.php';
-        ?>
-        <div class="content">
-            <div class="container-fluid">
-                <?php include 'content.php'; ?>
-            </div>
+      <?php
+      include 'layout/nav.php';
+      ?>
+      <div class="content">
+        <div class="container-fluid">
+          <?php include 'content.php'; ?>
         </div>
-        <?php include 'layout/footer.html'; ?>
+      </div>
+      <?php include 'layout/footer.html'; ?>
     </div>
   <?php
     if ($_GET['nav'] == 'stats') {
       include 'layout/tooltip-stats.php';
     } elseif ($_GET['nav'] == 'pemilik-kendaraan') {
       include 'layout/modal-impor.html';
+      include 'layout/modal-pemilik-kendaraan.php';
     }
-  } // END.ELSE.SESSION.GA.KOSONG
-  ?>
+  } // END.ELSE.SESSION.GA.KOSONG ?>
 </div>
 
 

@@ -7,12 +7,11 @@ if (isset($_POST['terapkan'])) {
                     where month(tgl_bayar)='$bulan' and year(tgl_bayar)='$tahun'
                     order by kecamatan, merek asc");
 } else {
-  $q = mysqli_query($conn, "select * from tb_pemilik_kendaraan order by kecamatan, merek asc");
+  $q = mysqli_query($conn, "select * from tb_pemilik_kendaraan order by kecamatan, merek asc limit 0,100");
   $bulan = "";
   $tahun = "";
   $selected = "";
-}
-?>
+} ?>
 <div class="row">
   <div class="col-md-12">
     <div class="card">
@@ -23,18 +22,29 @@ if (isset($_POST['terapkan'])) {
                 <div class="form-group">
                   <select class="form-control" name="bulan" required>
                     <option value="">&#8212;Pilih Bulan&#8212;</option>
-                    <option value="1" <?php if ($bulan=='1') { print $selected; } ?>>Januari</option>
-                    <option value="2" <?php if ($bulan=='2') { print $selected; } ?>>Februari</option>
-                    <option value="3" <?php if ($bulan=='3') { print $selected; } ?>>Maret</option>
-                    <option value="4" <?php if ($bulan=='4') { print $selected; } ?>>April</option>
-                    <option value="5" <?php if ($bulan=='5') { print $selected; } ?>>Mei</option>
-                    <option value="6" <?php if ($bulan=='6') { print $selected; } ?>>Juni</option>
-                    <option value="7" <?php if ($bulan=='7') { print $selected; } ?>>Juli</option>
-                    <option value="8" <?php if ($bulan=='8') { print $selected; } ?>>Agustus</option>
-                    <option value="9" <?php if ($bulan=='9') { print $selected; } ?>>September</option>
-                    <option value="10" <?php if ($bulan=='10') { print $selected; } ?>>Oktober</option>
-                    <option value="11" <?php if ($bulan=='11') { print $selected; } ?>>November</option>
-                    <option value="12" <?php if ($bulan=='12') { print $selected; } ?>>December</option>
+                    <?php
+                    // KAMUS BULAN :D
+                    $month = [
+                      'Januari',
+                      'Februari',
+                      'Maret',
+                      'April',
+                      'Mei',
+                      'Juni',
+                      'Juli',
+                      'Agustus',
+                      'September',
+                      'Oktober',
+                      'November',
+                      'Desember',
+                    ];
+                    $q_bulan = mysqli_query($conn, "select month(tgl_bayar) as bulan from tb_pemilik_kendaraan group by month(tgl_bayar)");
+                    while($b = mysqli_fetch_array($q_bulan)) {
+                      $bln = (int)$b['bulan'];
+                      $bln = $bln - 1;
+                      $bln_str = (string)$bln;?>
+                      <option value="<?php print $b['bulan'] ?>" <?php if ($bulan==$b['bulan']) { print $selected; } ?>><?php print $month[$bln] ?></option>
+                    <?php } ?>
                   </select>
                 </div>
             </div>
@@ -46,7 +56,7 @@ if (isset($_POST['terapkan'])) {
                   $q_year = mysqli_query($conn, "select year(tgl_bayar) as tahun from tb_pemilik_kendaraan group by year(tgl_bayar)");
                   while($r = mysqli_fetch_array($q_year)) { ?>
                     <option value="<?php print $r['tahun']?>" <?php if ($tahun==$r['tahun']) { print $selected; } ?>><?php print $r['tahun']?></option>
-                  <?php } ?>
+                  <?php } // TUTUP.WHILE $q_year ?>
                 </select>
               </div>
             </div>
@@ -71,21 +81,24 @@ if (isset($_POST['terapkan'])) {
             <th>ALAMAT</th>
             <th>KEC.</th>
             <th>MEREK</th>
+            <th>AKSI</th>
           </thead>
           <tbody>
           <?php
           $no = 0;
           while($row = mysqli_fetch_array($q)) {
-            $no++;
-          ?>
+            $no++; ?>
             <tr>
               <td><?php print $no?>.</td>
-              <td><em>(Dirahasiakan)</em> </td>
+              <td><?php print $row['nama_pemilik'] ?></td>
               <td><?php print $row['alamat_pemilik']?></td>
               <td><?php print $row['kecamatan']?></td>
               <td><?php print $row['merek']?></td>
+              <td>
+                <a href="#" class="btn btn-info" data-toggle="modal" data-target="#detil-<?php print $row['id'] ?>">RINCIAN</a>
+              </td>
             </tr>
-          <?php } ?>
+          <?php } // TUTUP.WHILE ?>
           </tbody>
         </table>
       </div> <!-- ./content -->
