@@ -24,7 +24,7 @@ if (isset($_POST['masuk'])) {
   <div class="container">
     <div class="row">
       <div class="col-md-4 col-md-offset-4">
-        <h2 class="text-center">E-STATS.</h2>
+        <h2 class="text-center">E-STATS.</h2> 
         <div class="card">
           <div class="content">
             <?php print $msg; ?>
