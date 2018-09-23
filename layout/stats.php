@@ -28,15 +28,22 @@ if (isset($_POST['terapkan'])) {
 
   // FETCH DATA PEMILIK KENDARAAN BERDASARKAN BULAN DAN TAHUN YG DITENTUKAN
   // OLEH USER. BULAN DAN TAHUN DIAMBIL DARI FORM YG DI SUBMUT USER.
-  $q = mysqli_query($conn, "select * from tb_pemilik_kendaraan
-                    where month(tgl_bayar)='$bulan' and year(tgl_bayar)='$tahun'
-                    order by kecamatan, merek asc");
+  // $q = mysqli_query($conn, "select * from tb_pemilik_kendaraan
+  //                   where month(tgl_bayar)='$bulan' and year(tgl_bayar)='$tahun'
+  //                   group by kecamatan, merek
+  //                   order by kecamatan, merek asc");
+  $q_merek = mysqli_query($conn, "select a.nama, b.merek, count(merek) as jumlah from tb_peta a
+                        inner join tb_pemilik_kendaraan b on a.nama=b.kecamatan
+                        where month(tgl_bayar)='$bulan' and
+                        year(tgl_bayar)='$tahun'
+                        group by a.nama, b.merek
+                        order by count(merek) desc");
   // END.FETCH.DATA.BULAN.TAHUN.
 
   // STATS-RANK-COLOR.PHP
   //include "layout/stats-rank-color.php";
 
-
+  $result = false;
 } else {
   $q = mysqli_query($conn, "select * from tb_pemilik_kendaraan order by kecamatan, merek asc");
   $bulan = "";
@@ -69,11 +76,36 @@ if (isset($_POST['terapkan'])) {
             $q_peta = mysqli_query($conn, "select * from tb_peta order by pid asc");
             $i = 0;
             while($r = mysqli_fetch_array($q_peta)) {
-              if ($peta['nama'] == $r['nama']) {
-                $fill = "rgba(70, 255, 70, .5)";
+              $rank = [];
+              $q_merek = mysqli_query($conn, "select kecamatan, merek, count(merek) as jml_unit from tb_pemilik_kendaraan
+                             where kecamatan='".$r['nama']."' and
+                             month(tgl_bayar)='$bulan' and
+                             year(tgl_bayar)='$tahun'
+                             group by merek
+                             order by jml_unit desc");
+              $count = mysqli_num_rows($q_merek);
+              if ($count > 0) {
+                while ($b = mysqli_fetch_array($q_merek)) {
+                  array_push($rank, $b['merek']);
+                  if (in_array('TOYOTA', $rank) == true) {
+                    if ($rank[0] == "TOYOTA") {
+                      $fill = "rgba(70, 255, 70, .5)";
+                    } else {
+                      $fill = "rgba(200, 255, 70, .5)";
+                    }
+                  } else {
+                    $fill = "rgba(200, 10, 10, .5)";
+                  }
+                }
               } else {
-                $fill = "rgba(200, 200, 200, .9)";
-              } ?>
+                $fill = "rgba(200, 10, 10, .5)";
+              }
+              // if ($peta['nama'] == $r['nama']) {
+              //   $fill = "rgba(70, 255, 70, .5)";
+              // }
+              // else {
+              //   $fill = "rgba(200, 200, 200, .9)";
+              // } ?>
               <!-- shape -->
               <a id="tooltip-<?php print $i?>" data-tooltip-content="#<?php print $r['slug']?>">
                 <path stroke="rgba(90, 90, 90, .9)" stroke-width="1" stroke-linecup="round" d=" <?php print $r['shape']?> " fill="<?php print $fill?>"/>
@@ -277,6 +309,7 @@ if (isset($_POST['terapkan'])) {
             </a>
           </g>
         </svg>
+        <?php print_r($rank); ?>
       </div>
     </div>
   </div>
