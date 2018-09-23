@@ -38,7 +38,7 @@ while ($row = mysqli_fetch_array($q)) {
             // KALAU ADA KENDARAAN MEREK TOYOTA,
             // KASIH WARNA IJO.
             if ($r['merek'] == 'TOYOTA') {
-              $bgcolor = 'rgba(70, 255, 70, .3)';
+              $bgcolor = 'rgba(200, 200, 200, .5)';
             } else {
               $bgcolor = 'transparent';
             } ?>
