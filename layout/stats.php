@@ -186,9 +186,9 @@ if (isset($_POST['terapkan'])) {
         # PILIH STYLE CONCLUSION :D
 
         # 1. BENTUK TABEL
-        #include 'layout/stats-conclusion-table.php';
+        include 'layout/stats-conclusion-table.php';
         # 2. BENTUK CHART DONAT
-        include 'layout/stats-conclusion-chart.php';
+        #include 'layout/stats-conclusion-chart.php';
         ?>
       </div>
     </div>
