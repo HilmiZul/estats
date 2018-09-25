@@ -1,2 +1,2 @@
 <?php
-$conn = mysqli_connect("localhost", "root", "", "DB_DATAVISUAL");
+$conn = mysqli_connect("127.0.0.1", "root", "", "DB_DATAVISUAL");
