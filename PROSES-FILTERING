@@ -1,9 +1,0 @@
-LOOP TB_KEC.
-  1. FILTER SEMUA KENDARAAN DISETIAP KEC. URUTKAN DESC. (JUMLAH KENDARAAN)
-  SELECT kecamatan, merek, count(merek) as jml_merek, max(merek) from tb_pemilik_kendaraan group by kecamatan, merek order by count(merek) desc;
-
-  2. BANDINGAN SETIAP KECAMATAN.
-     IF(TB_KEC.NAMA == TB_PEMILIK.KEC)
-     KALAU ADA/SAMA DENGAN DATA DITABEL KEC.
-      - CEK URUTAN/RANKING
-        - GANTI FILL COLOR
