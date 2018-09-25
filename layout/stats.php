@@ -43,6 +43,9 @@ if (isset($_POST['terapkan'])) {
   // STATS-RANK-COLOR.PHP
   //include "layout/stats-rank-color.php";
 
+
+  # $result digunakan untuk menampilkan pesan data belum di filter.
+  # kalo nilainya false, berarti data sudah di filter
   $result = false;
 } else {
   $q = mysqli_query($conn, "select * from tb_pemilik_kendaraan order by kecamatan, merek asc");
@@ -52,9 +55,15 @@ if (isset($_POST['terapkan'])) {
   $result = true;
 } ?>
 <div class="row">
+
+  <!-- STATS.MAP -->
   <div class="col-md-8">
     <?php include "layout/stats-map.php"; ?>
+
+    <?php include "layout/stats-chart.php"; ?>
   </div>
+
+  <!-- SIDEBAR.RIGHT -->
   <div class="col-md-4">
     <div class="card">
       <div class="header">
@@ -165,40 +174,22 @@ if (isset($_POST['terapkan'])) {
         <h4 class="title"><i class="fa fa-flag"></i> Conclusion</h4>
       </div>
       <div class="content">
-        <table class="table table-hover table-striped">
-          <thead>
-            <tr>
-              <th>KECAMATAN</th>
-              <th>JUMLAH</th>
-            </tr>
-          </thead>
-          <tbody>
-          <?php
-          $q_conclusion = mysqli_query($conn, "select kecamatan, merek, count(merek) as jml_unit from tb_pemilik_kendaraan
-                                      where merek='TOYOTA' and
-                                      month(tgl_bayar)='$bulan' and
-                                      year(tgl_bayar)='$tahun'
-                                      group by kecamatan, merek
-                                      order by count(merek) desc");
-          $count = mysqli_num_rows($q_conclusion);
+        <?php $q_conclusion = mysqli_query($conn, "select kecamatan, count(merek) as jml_unit from tb_pemilik_kendaraan
+                                    where merek='TOYOTA' and
+                                    month(tgl_bayar)='$bulan' and
+                                    year(tgl_bayar)='$tahun'
+                                    group by kecamatan, merek
+                                    order by count(merek) desc");
+        $count = mysqli_num_rows($q_conclusion);
 
-          # CEK APAKAH ADA DATA?
-          if ($count > 0) {
-            while ($row_conclu = mysqli_fetch_array($q_conclusion)) {?>
-              <tr>
-                <td><?php print $row_conclu['kecamatan'] ?></td>
-                <td><?php print $row_conclu['jml_unit'] ?></td>
-              </tr>
-            <?php
-            } # TUTUP.WHILE.LOOP.DATA
-          } else { ?>
-            <tr>
-              <td colspan="2"><em>Tidak ada data. Silahkan filter datanya.</em></td>
-            </tr>
-          <?php
-          } // TUTUP.IF.count ?>
-          </tbody>
-        </table>
+
+        # PILIH STYLE CONCLUSION :D
+
+        # 1. BENTUK TABEL
+        #include 'layout/stats-conclusion-table.php';
+        # 2. BENTUK CHART DONAT
+        include 'layout/stats-conclusion-chart.php';
+        ?>
       </div>
     </div>
 
