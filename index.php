@@ -34,5 +34,5 @@ include 'layout/head.php';
 
 
 </body>
-<?php include 'layout/js.html'; ?>
+<?php include 'layout/js.php'; ?>
 </html>
