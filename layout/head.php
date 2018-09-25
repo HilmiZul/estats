@@ -20,6 +20,8 @@
 
   <link href="assets/css/themify-icons.css" rel="stylesheet">
 
+  <link rel="stylesheet" href="lib/morris/css/morris.css">
+
   <link rel="stylesheet" href="plugin/tooltipster/css/tooltipster.bundle.css">
   <link rel="stylesheet" href="plugin/tooltipster/css/tooltipster-follower.min.css">
 
