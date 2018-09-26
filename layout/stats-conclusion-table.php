@@ -20,5 +20,5 @@ if ($count > 0) { ?>
   </table>
 <?php
 } else {
-  print "<em>Tidak ada data. Silahkan filter.";
+  print "<em>Tidak ada data. Silahkan filter.</em>";
 }?>
