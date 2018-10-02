@@ -2,7 +2,7 @@
   <?php if($result) {?>
     <div class="header">
       <div class="alert alert-danger">
-        <p><em>Belum ada data. Silahkan Filter terlebih dahulu.</em></p>
+        <p><em>Silahkan Filter terlebih dahulu.</em></p>
       </div>
     </div>
   <?php } ?>
