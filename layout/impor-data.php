@@ -42,7 +42,7 @@ if (isset($_POST['upload'])) {
                     '$alamat_pemilik', '$kec', 'KARAWANG', '$jenis',
                     '$merek', '$model_type', $tahun, '$tgl_bayar'
                   )";
-          mysql_query($query);
+          mysqli_query($conn, $query);
 
 
         }
@@ -58,7 +58,7 @@ if (isset($_POST['upload'])) {
                     '$alamat_pemilik', '$kec', 'KARAWANG', '$jenis',
                     '$merek', '$model_type', $tahun, '$tgl_bayar'
                   )";
-          mysql_query($query);
+          mysqli_query($conn, $query);
 
 
         }
@@ -71,7 +71,7 @@ if (isset($_POST['upload'])) {
                     '$alamat_pemilik', '$kec', 'KARAWANG', '$jenis',
                     '$merek', '$model_type', $tahun, '$tgl_bayar'
                   )";
-          mysql_query($query);
+          mysqli_query($conn, $query);
 
 
         }
@@ -84,7 +84,7 @@ if (isset($_POST['upload'])) {
                     '$alamat_pemilik', '$kec', 'KARAWANG', '$jenis',
                     '$merek', '$model_type', $tahun, '$tgl_bayar'
                   )";
-          mysql_query($query);
+          mysqli_query($conn, $query);
 
 
         }
@@ -98,7 +98,7 @@ if (isset($_POST['upload'])) {
                     '$alamat_pemilik', '$kec', 'KARAWANG', '$jenis',
                     '$merek', '$model_type', $tahun, '$tgl_bayar'
                   )";
-          mysql_query($query);
+          mysqli_query($conn, $query);
 
 
         }
@@ -111,7 +111,7 @@ if (isset($_POST['upload'])) {
                     '$alamat_pemilik', '$kec', 'KARAWANG', '$jenis',
                     '$merek', '$model_type', $tahun, '$tgl_bayar'
                   )";
-          mysql_query($query);
+          mysqli_query($conn, $query);
 
 
         }
@@ -124,7 +124,7 @@ if (isset($_POST['upload'])) {
                     '$alamat_pemilik', '$kec', 'KARAWANG', '$jenis',
                     '$merek', '$model_type', $tahun, '$tgl_bayar'
                   )";
-          mysql_query($query);
+          mysqli_query($conn, $query);
 
 
         }
@@ -137,7 +137,7 @@ if (isset($_POST['upload'])) {
                     '$alamat_pemilik', '$kec', 'KARAWANG', '$jenis',
                     '$merek', '$model_type', $tahun, '$tgl_bayar'
                   )";
-          mysql_query($query);
+          mysqli_query($conn, $query);
 
 
         }
