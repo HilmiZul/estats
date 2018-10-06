@@ -1,4 +1,10 @@
 <?php
+// CLEAR DATA
+if (isset($_POST['clear'])) {
+  mysqli_query($conn, "truncate tb_pemilik_kendaraan");
+  $msg = "<div class='alert alert-success'><i class='fa fa-check'></i> Semua data telah dihapus.</div>";
+}
+
 if (isset($_POST['terapkan'])) {
   $bulan = $_POST['bulan'];
   $tahun = $_POST['tahun'];
@@ -11,7 +17,19 @@ if (isset($_POST['terapkan'])) {
   $bulan = "";
   $tahun = "";
   $selected = "";
-} ?>
+}
+
+// CEK APAKAH ADA DATA?
+$q_data = mysqli_query($conn, "select * from tb_pemilik_kendaraan");
+$count = mysqli_num_rows($q_data);
+?>
+<div class="row">
+  <div class="col-md-12">
+    <div class="card">
+
+    </div>
+  </div>
+</div>
 <div class="row">
   <div class="col-md-12">
     <div class="card">
@@ -67,12 +85,20 @@ if (isset($_POST['terapkan'])) {
             </div>
           </form>
           <div class="col-md-3">
+
+            <?php if ($count > 0) { ?>
+            <button type="button" data-toggle="modal" data-target="#clear-data" class="btn btn-danger pull-right">
+              <i class="fa fa-trash-o"></i>
+            </button>
+            <?php } ?>
+
             <button type="button" data-toggle="modal" data-target="#impor" class="btn btn-success pull-right">
               <i class="ti-import"></i> Import .XLS
             </button>
           </div>
         </div>
       </div>
+      <?php print $msg; ?>
       <div class="content table-responsive table-full-width">
         <table class="table table-striped table-hover" id="dataTables">
           <thead>

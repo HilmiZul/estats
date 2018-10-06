@@ -18,6 +18,23 @@ if (isset($_POST['upload'])) {
 
     $coun = 0;
 
+    // FILTER ALAMAT.
+    // AMBIL KECAMATANNYA.
+    // MASUKKIN KE ALAY eh ARRAY :D
+    $save_kec = [];
+    $lib_kec = [
+      'CIKAMPEK', 'KRW TMR', 'KRW TIMUR', 'KARAWANG WETAN', 'KARAWANG TIMUR',
+      'KARAWANG TMR', 'CILAMAYA KULON', 'PURWASARI', 'CILAMAYA WTN', 'CILAMAYA WETAN',
+      'JATISARI', 'KOTABARU', 'KLARI', 'JKARI', 'TLJB TMR', 'TLJB TIMUR', 'TELUKJAMBE TMR',
+      'TELUKJAMBE TIMUR', 'TELAGASARI', 'TALAGASARI', 'TEMPURAN', 'MAJALAYA', 'BATUJAYA',
+      'CIAMPEL', 'KARAWANG BARAT', 'KARAWANG BRT', 'KRW BRT', 'KRW BARAT', 'CIBUAYA',
+      'TEGALWARU', 'JAYAKERTA', 'TIRTAMULYA', 'RENGASDENGKLOK', 'PEDES', 'PAKISJAYA',
+      'BANYUSARI', 'CILEBAR', 'KUTAWALUYA', 'LAMAHABANG', 'LEMAHABANG', 'PANGKALAN',
+      'RAWAMERTA', 'TLJB BARAT', 'TLJB BRT', 'TELUKJAMBE BRT', 'TELUKJAMBE BARAT',
+      'TIRTAJAYA'
+    ];
+
+    // DATA YANG UDAH DI FILTER, MASUKKIN KE TABEL
     for ($i=2; $i<=$hasildata; $i++) {
       $no_pol = $data->val($i,2);
       $plat = $data->val($i,3);
@@ -32,7 +49,33 @@ if (isset($_POST['upload'])) {
       $tgl_bayar = date_format($tgl_bayar, 'Ymd');
 
       $alamat = explode(" ",$alamat_pemilik);
+
       foreach ($alamat as $index => $value) {
+        // if (in_array($alamat[$index], $lib_kec) == true) {
+        //   array_push($save_kec, $alamat[$index]);
+        //     $kec = $alamat[$index];
+        //
+        //     $query = "INSERT INTO tb_pemilik_kendaraan  VALUES (
+        //               null, '$no_pol', $plat, '$nama_pemilik',
+        //               '$alamat_pemilik', '$kec', 'KARAWANG', '$jenis',
+        //               '$merek', '$model_type', $tahun, '$tgl_bayar'
+        //             )";
+        //     mysqli_query($conn, $query);
+        // } elseif (
+        //           (in_array($alamat[$index], $lib_kec) == true) &&
+        //           (in_array($alamat[$index+1], $lib_kec) == true)
+        //          ) {
+        //            $alamat = $alamat[$index]." ".$alamat[$index+1];
+        //           array_push($save_kec, $alamat);
+        //           $kec = $alamat[$index];
+        //
+        //           $query = "INSERT INTO tb_pemilik_kendaraan  VALUES (
+        //                     null, '$no_pol', $plat, '$nama_pemilik',
+        //                     '$alamat_pemilik', '$kec', 'KARAWANG', '$jenis',
+        //                     '$merek', '$model_type', $tahun, '$tgl_bayar'
+        //                   )";
+        //           mysqli_query($conn, $query);
+        // }
         # 1 CIKAMPEK
         if ($alamat[$index] == "CIKAMPEK") {
           $kec = $alamat[$index];
@@ -436,20 +479,32 @@ if (isset($_POST['upload'])) {
                   )";
           mysqli_query($conn, $query);
         }
-        /*else {
-          $kec = "";
-          $query = "INSERT INTO tb_pemilik_kendaraan  VALUES (
-                    null, '$no_pol', $plat, '$nama_pemilik',
-                    '$alamat_pemilik', '$kec', 'KARAWANG', '$jenis',
-                    '$merek', '$model_type', $tahun, '$tgl_bayar'
-                  )";
-          mysqli_query($conn, $query);
-        }*/
+        // elseif (in_array($alamat[$index], $arr_kec) == false) {
+        //   $kec = "NULL";
+        //   $query = "INSERT INTO tb_pemilik_kendaraan  VALUES (
+        //             null, '$no_pol', $plat, '$nama_pemilik',
+        //             '$alamat_pemilik', '$kec', 'KARAWANG', '$jenis',
+        //             '$merek', '$model_type', $tahun, '$tgl_bayar'
+        //           )";
+        //   mysqli_query($conn, $query);
+        // }
+        // else {
+        //   $kec = "NULL";
+        //   $query = "INSERT INTO tb_pemilik_kendaraan  VALUES (
+        //             null, '$no_pol', $plat, '$nama_pemilik',
+        //             '$alamat_pemilik', '$kec', 'KARAWANG', '$jenis',
+        //             '$merek', '$model_type', $tahun, '$tgl_bayar'
+        //           )";
+        //   mysqli_query($conn, $query);
+        // }
       }
+      // END.FOREACH
+      // print_r($save_kec);
+
       /*if ($hasildata) $sukses++;
       else $gagal++;*/
     }
-
+    // END.FOR
     $msg = "<div class='alert alert-success'><i class='ti-check'></i> DATA BERHASIL DI IMPOR. <a href='?nav=pemilik-kendaraan' class='btn btn-success'>LIHAT</a></div>";
   } else {
     $msg = "<div class='alert alert-danger'><h4><i class='ti-na'></i> ERROR!</h4> BERKAS TIDAK DIIJINKAN. SILAHKAN IMPOR BERKAS DENGAN TIPE .XLS</div>";
