@@ -11,6 +11,6 @@ if ($count > 0) {
   }
   $chart_data = substr($chart_data, 0, -2);
 } else {
-  print "<em>Tidak ada data. Silahkan filter.";
+  print "<em>Tidak ada data. Silahkan filter.</em>";
 }
 ?>
