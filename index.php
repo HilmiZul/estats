@@ -28,6 +28,7 @@ include 'layout/head.php';
     } elseif ($_GET['nav'] == 'pemilik-kendaraan') {
       include 'layout/modal-impor.html';
       include 'layout/modal-pemilik-kendaraan.php';
+      include 'layout/modal-clear-data.html';
     }
   } // END.ELSE.SESSION.GA.KOSONG ?>
 </div>
