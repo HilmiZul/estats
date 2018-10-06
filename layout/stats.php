@@ -171,7 +171,7 @@ if (isset($_POST['terapkan'])) {
 
     <div class="card">
       <div class="header">
-        <h4 class="title"><i class="fa fa-flag"></i> Conclusion</h4>
+        <h4 class="title"><i class="fa fa-flag"></i> Tabel Simpulan</h4>
       </div>
       <div class="content">
         <?php $q_conclusion = mysqli_query($conn, "select kecamatan, count(merek) as jml_unit from tb_pemilik_kendaraan
