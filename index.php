@@ -1,5 +1,6 @@
 <?php
 include 'smpro-con.php';
+include 'layout/kamus-bulan.php';
 include 'layout/head.php';
 ?>
 <body>
