@@ -1,8 +1,8 @@
 <?php
 if (isset($_POST['terapkan'])) {
   $q = mysqli_query($conn, "select * from tb_pemilik_kendaraan
-                    where month(tgl_bayar)='$bulan' and
-                    year(tgl_bayar)='$tahun'
+                    where month(tgl_bayar)
+                    between '$bulan' and '$bulan_end'
                     order by kecamatan, merek asc
                     ");
 } else {

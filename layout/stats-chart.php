@@ -5,8 +5,8 @@
   <div class="content">
     <?php $q_conclusion = mysqli_query($conn, "select kecamatan, count(merek) as jml_unit from tb_pemilik_kendaraan
                                 where merek='TOYOTA' and
-                                month(tgl_bayar)='$bulan' and
-                                year(tgl_bayar)='$tahun'
+                                month(tgl_bayar) 
+                                between '$bulan' and '$bulan_end'
                                 group by kecamatan, merek
                                 order by count(merek) desc");
     $count = mysqli_num_rows($q_conclusion); ?>

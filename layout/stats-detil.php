@@ -1,13 +1,14 @@
 <?php
 if ($_GET['detil'] == 'true') {
-  if (!empty($_GET['kecamatan']) && !empty($_GET['bulan']) && !empty($_GET['tahun'])) {
+  if (!empty($_GET['kecamatan']) && !empty($_GET['bulan']) && !empty($_GET['bulan_end'])) {
     $bulan = $_GET['bulan'];
-    $tahun = $_GET['tahun'];
+    $bulan_end = $_GET['bulan_end'];
     $kec = $_GET['kecamatan'];
     $kec = str_replace('-', ' ', $kec);
     $selected = "selected";
     $q = mysqli_query($conn, "select * from tb_pemilik_kendaraan
-                      where month(tgl_bayar)='$bulan' and year(tgl_bayar)='$tahun'
+                      where month(tgl_bayar)
+                      between '$bulan' and '$bulan_end'
                       and kecamatan='$kec'
                       order by kecamatan, merek asc");
     $count = mysqli_num_rows($q);

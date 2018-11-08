@@ -77,8 +77,11 @@ if (isset($_POST['upload'])) {
         //           mysqli_query($conn, $query);
         // }
         # 1 CIKAMPEK
-        if ($alamat[$index] == "CIKAMPEK") {
-          $kec = $alamat[$index];
+        if (($alamat[$index] == "CIKAMPEK") && ($alamat[$index+1] == "KARAWANG") ||
+                ($alamat[$index] == "CIKAMPEK") && ($alamat[$index+1] == "KRW") ||
+                ($alamat[$index] == "CKP") && ($alamat[$index+1] == "KARAWANG") ||
+                ($alamat[$index] == "CKP") && ($alamat[$index+1] == "KRW")) {
+          $kec = "CIKAMPEK";
 
           $query = "INSERT INTO tb_pemilik_kendaraan  VALUES (
                     null, '$no_pol', $plat, '$nama_pemilik',
@@ -91,7 +94,7 @@ if (isset($_POST['upload'])) {
         }
         # 2 KARAWANG TIMUR
         elseif (($alamat[$index] == "KRW") && ($alamat[$index+1] == "TMR") ||
-                ($alamat[$index] == "KARAWANG") && ($alamat[$index+1] == "WETAN") ||
+                ($alamat[$index] == "KRW") && ($alamat[$index+1] == "TIMUR") ||
                 ($alamat[$index] == "KARAWANG") && ($alamat[$index+1] == "TIMUR") ||
                 ($alamat[$index] == "KARAWANG") && ($alamat[$index+1] == "TMR")) {
           $kec = "KARAWANG TIMUR";
@@ -119,8 +122,10 @@ if (isset($_POST['upload'])) {
 
         }
         # 4 PURWASARI
-        elseif ($alamat[$index] == "PURWASARI") {
-          $kec = $alamat[$index];
+        elseif (($alamat[$index] == "PURWASARI") && ($alamat[$index+1] == "KRW") ||
+                ($alamat[$index] == "PURWASARI") && ($alamat[$index+1] == "KARAWANG") ||
+                ($alamat[$index] == "RW011") && ($alamat[$index+1] == "PURWASARI")){
+          $kec = "PURWASARI";
 
           $query = "INSERT INTO tb_pemilik_kendaraan  VALUES (
                     null, '$no_pol', $plat, '$nama_pemilik',
@@ -146,8 +151,12 @@ if (isset($_POST['upload'])) {
 
         }
         # 6 JATISARI
-        elseif ($alamat[$index] == "JATISARI") {
-          $kec = $alamat[$index];
+        elseif (($alamat[$index] == "JATISARI") && ($alamat[$index+1] == "KRW") ||
+                ($alamat[$index] == "JATISARI") && ($alamat[$index+1] == "KARAWANG") ||
+                ($alamat[$index] == "JTSR") ||
+                ($alamat[$index] == "JT") && ($alamat[$index+1] == "SARI") ||
+                ($alamat[$index] == "RW007") && ($alamat[$index+1] == "BALONGGANDU")) {
+          $kec = "JATISARI";
 
           $query = "INSERT INTO tb_pemilik_kendaraan  VALUES (
                     null, '$no_pol', $plat, '$nama_pemilik',
@@ -159,8 +168,8 @@ if (isset($_POST['upload'])) {
 
         }
         # 7 KOTABARU
-        elseif ($alamat[$index] == "KOTABARU") {
-          $kec = $alamat[$index];
+        elseif (($alamat[$index] == "KOTABARU") || ($alamat[$index] == "KTBR")) {
+          $kec = "KOTABARU";
 
           $query = "INSERT INTO tb_pemilik_kendaraan  VALUES (
                     null, '$no_pol', $plat, '$nama_pemilik',
@@ -172,7 +181,9 @@ if (isset($_POST['upload'])) {
 
         }
         # 8 KLARI
-        elseif (($alamat[$index] == "KLARI") || ($alamat[$index] == "JKARI")) {
+        elseif (($alamat[$index] == "KLARI") && ($alamat[$index+1] == "KARAWANG") ||
+                ($alamat[$index] == "KLARI") && ($alamat[$index+1] == "KRW") ||
+                ($alamat[$index] == "JKARI")) {
           $kec = "KLARI";
 
           $query = "INSERT INTO tb_pemilik_kendaraan  VALUES (
@@ -187,7 +198,10 @@ if (isset($_POST['upload'])) {
         # 9 TELUKJAMBE TIMUR
         elseif (($alamat[$index] == "TLJB") && ($alamat[$index+1] == "TIMUR") ||
                 ($alamat[$index] == "TLJB") && ($alamat[$index+1] == "TMR") ||
-                ($alamat[$index] == "TELUKJAMBE") && ($alamat[$index+1] == "TIMUR")) {
+                ($alamat[$index] == "JAMBE") && ($alamat[$index+1] == "TMR") ||
+                ($alamat[$index] == "JAMBE") && ($alamat[$index+1] == "TIMUR") ||
+                ($alamat[$index] == "TELUKJAMBE") && ($alamat[$index+1] == "TIMUR") ||
+                ($alamat[$index] == "TELUKJAMBE") && ($alamat[$index+1] == "TMR")) {
           $kec = "TELUKJAMBE TIMUR";
 
           $query = "INSERT INTO tb_pemilik_kendaraan  VALUES (
@@ -200,8 +214,11 @@ if (isset($_POST['upload'])) {
 
         }
         # 10 TALAGASARI / TELAGASARI
-        elseif (($alamat[$index] == "TELAGASARI") || ($alamat[$index] == "TALAGASARI")) {
-          $kec = "TALAGASARI";
+        elseif (($alamat[$index] == "TELAGASARI") && ($alamat[$index+1] == "KARAWANG") ||
+                ($alamat[$index] == "TELAGASARI") && ($alamat[$index+1] == "KRW") ||
+                ($alamat[$index] == "TALAGASARI") && ($alamat[$index+1] == "KARAWANG") ||
+                ($alamat[$index] == "TALAGASARI") && ($alamat[$index+1] == "KRW")) {
+          $kec = "TELAGASARI";
 
           $query = "INSERT INTO tb_pemilik_kendaraan  VALUES (
                     null, '$no_pol', $plat, '$nama_pemilik',
@@ -226,8 +243,11 @@ if (isset($_POST['upload'])) {
 
         }
         # 12 MAJALAYA
-        elseif ($alamat[$index] == "MAJALAYA") {
-          $kec = $alamat[$index];
+        elseif (($alamat[$index] == "MAJALAYA") && ($alamat[$index+1] == "KARAWANG") ||
+                ($alamat[$index] == "MAJALAYA") && ($alamat[$index+1] == "KRW") ||
+                ($alamat[$index] == "MJLY") && ($alamat[$index+1] == "KARAWANG") ||
+                ($alamat[$index] == "MJLY") && ($alamat[$index+1] == "KRW")) {
+          $kec = "MAJALAYA";
 
           $query = "INSERT INTO tb_pemilik_kendaraan  VALUES (
                     null, '$no_pol', $plat, '$nama_pemilik',
@@ -252,8 +272,9 @@ if (isset($_POST['upload'])) {
 
         }
         # 14 CIAMPEL
-        elseif ($alamat[$index] == "CIAMPEL") {
-          $kec = $alamat[$index];
+        elseif (($alamat[$index] == "CIAMPEL") && ($alamat[$index+1] == "KARAWANG") ||
+                ($alamat[$index] == "CIAMPEL") && ($alamat[$index+1] == "KRW")) {
+          $kec = "CIAMPEL";
 
           $query = "INSERT INTO tb_pemilik_kendaraan  VALUES (
                     null, '$no_pol', $plat, '$nama_pemilik',
@@ -281,8 +302,9 @@ if (isset($_POST['upload'])) {
 
         }
         # 16 CIBUAYA
-        elseif ($alamat[$index] == "CIBUAYA") {
-          $kec = $alamat[$index];
+        elseif (($alamat[$index] == "CIBUAYA") && ($alamat[$index+1] == "KARAWANG") ||
+                ($alamat[$index] == "CIBUAYA") && ($alamat[$index+1] == "KRW")) {
+          $kec = "CIBUAYA";
 
           $query = "INSERT INTO tb_pemilik_kendaraan  VALUES (
                     null, '$no_pol', $plat, '$nama_pemilik',
@@ -294,8 +316,9 @@ if (isset($_POST['upload'])) {
 
         }
         # 17 TEGALWARU
-        elseif ($alamat[$index] == "TEGALWARU") {
-          $kec = $alamat[$index];
+        elseif (($alamat[$index] == "TEGALWARU") && ($alamat[$index+1] == "KARAWANG") ||
+                ($alamat[$index] == "TEGALWARU") && ($alamat[$index+1] == "KRW")) {
+          $kec = "TEGALWARU";
 
           $query = "INSERT INTO tb_pemilik_kendaraan  VALUES (
                     null, '$no_pol', $plat, '$nama_pemilik',
@@ -307,8 +330,9 @@ if (isset($_POST['upload'])) {
 
         }
         # 18 JAYAKERTA
-        elseif ($alamat[$index] == "JAYAKERTA") {
-          $kec = $alamat[$index];
+        elseif (($alamat[$index] == "JAYAKERTA") && ($alamat[$index+1] == "KARAWANG") ||
+                ($alamat[$index] == "JAYAKERTA") && ($alamat[$index+1] == "KRW")) {
+          $kec = "JAYAKERTA";
 
           $query = "INSERT INTO tb_pemilik_kendaraan  VALUES (
                     null, '$no_pol', $plat, '$nama_pemilik',
@@ -334,7 +358,10 @@ if (isset($_POST['upload'])) {
         }
 
         # 20 RENGASDENGKLOK
-        elseif ($alamat[$index] == "RENGASDENGKLOK" || $alamat[$index] == "RDK") {
+        elseif (($alamat[$index] == "RDK") && ($alamat[$index+1] == "KRW") ||
+                ($alamat[$index] == "RENGASDENGKLOK") && ($alamat[$index+1] == "KRW") ||
+                ($alamat[$index] == "RDK") && ($alamat[$index+1] == "KARAWANG") ||
+                ($alamat[$index] == "RENGASDENGKLOK") && ($alamat[$index+1] == "KARAWANG")) {
           $kec = "RENGASDENGKLOK";
 
           $query = "INSERT INTO tb_pemilik_kendaraan  VALUES (
@@ -387,8 +414,9 @@ if (isset($_POST['upload'])) {
 
         }
         # 24 CILEBAR
-        elseif ($alamat[$index] == "CILEBAR") {
-          $kec = $alamat[$index];
+        elseif (($alamat[$index] == "CILEBAR") && ($alamat[$index+1] == "KARAWANG") ||
+                ($alamat[$index] == "CILEBAR") && ($alamat[$index+1] == "KRW")) {
+          $kec = "CILEBAR";
 
           $query = "INSERT INTO tb_pemilik_kendaraan  VALUES (
                     null, '$no_pol', $plat, '$nama_pemilik',
@@ -400,8 +428,9 @@ if (isset($_POST['upload'])) {
 
         }
         # 25 KUTAWALUYA
-        elseif ($alamat[$index] == "KUTAWALUYA") {
-          $kec = $alamat[$index];
+        elseif (($alamat[$index] == "KUTAWALUYA") && ($alamat[$index+1] == "KARAWANG") ||
+                ($alamat[$index] == "KUTAWALUYA") && ($alamat[$index+1] == "KRW")) {
+          $kec = "KUTAWALUYA";
 
           $query = "INSERT INTO tb_pemilik_kendaraan  VALUES (
                     null, '$no_pol', $plat, '$nama_pemilik',
@@ -412,9 +441,10 @@ if (isset($_POST['upload'])) {
 
 
         }
-        # 26 LAMAHABANG
-        elseif ($alamat[$index] == "LAMAHABANG" || $alamat[$index] == "LEMAHABANG") {
-          $kec = $alamat[$index];
+        # 26 LEMAHABANG
+        elseif (($alamat[$index] == "LEMAHABANG") && ($alamat[$index+1] == "KRW") ||
+                ($alamat[$index] == "LEMAHABANG") && ($alamat[$index+1] == "KARAWANG")) {
+          $kec = "LEMAHABANG";
 
           $query = "INSERT INTO tb_pemilik_kendaraan  VALUES (
                     null, '$no_pol', $plat, '$nama_pemilik',
@@ -426,8 +456,9 @@ if (isset($_POST['upload'])) {
 
         }
         # 27 PANGKALAN
-        elseif ($alamat[$index] == "PANGKALAN") {
-          $kec = $alamat[$index];
+        elseif (($alamat[$index] == "PANGKALAN") && ($alamat[$index+1] == "KRW") ||
+                ($alamat[$index] == "PANGKALAN") && ($alamat[$index+1] == "KARAWANG")) {
+          $kec = "PANGKALAN";
 
           $query = "INSERT INTO tb_pemilik_kendaraan  VALUES (
                     null, '$no_pol', $plat, '$nama_pemilik',
@@ -454,9 +485,10 @@ if (isset($_POST['upload'])) {
         # 29 TELUKJAMBE BARAT
         elseif (($alamat[$index] == "TLJB") && ($alamat[$index+1] == "BARAT") ||
                 ($alamat[$index] == "TLJB") && ($alamat[$index+1] == "BRT") ||
+                ($alamat[$index] == "JAMBE") && ($alamat[$index+1] == "BRT") ||
+                ($alamat[$index] == "JAMBE") && ($alamat[$index+1] == "BARAT") ||
                 ($alamat[$index] == "TELUKJAMBE") && ($alamat[$index+1] == "BARAT") ||
-                ($alamat[$index] == "TELUKJAMBE") && ($alamat[$index+1] == "BRT")
-                ) {
+                ($alamat[$index] == "TELUKJAMBE") && ($alamat[$index+1] == "BRT")) {
           $kec = "TELUKJAMBE BARAT";
 
           $query = "INSERT INTO tb_pemilik_kendaraan  VALUES (

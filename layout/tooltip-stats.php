@@ -15,8 +15,8 @@ while ($row = mysqli_fetch_array($q)) {
         // DIURUTKAN BERDASARKAN JUMLAH UNIT TERBANYAK.
         $q_detil_map = mysqli_query($conn, "select kecamatan, merek, count(merek) as jml_unit from tb_pemilik_kendaraan
                        where kecamatan='".$row['nama']."' and
-                       month(tgl_bayar)='$bulan' and
-                       year(tgl_bayar)='$tahun'
+                       month(tgl_bayar) 
+                       between '$bulan' and '$bulan_end'
                        group by merek
                        order by jml_unit desc");
 

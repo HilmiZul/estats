@@ -7,10 +7,11 @@ if (isset($_POST['clear'])) {
 
 if (isset($_POST['terapkan'])) {
   $bulan = $_POST['bulan'];
-  $tahun = $_POST['tahun'];
+  $bulan_end = $_POST['bulan_end'];
   $selected = "selected";
   $q = mysqli_query($conn, "select * from tb_pemilik_kendaraan
-                    where month(tgl_bayar)='$bulan' and year(tgl_bayar)='$tahun'
+                    where month(tgl_bayar)
+                    between '$bulan' and '$bulan_end'
                     order by kecamatan, merek asc");
 } else {
   $q = mysqli_query($conn, "select * from tb_pemilik_kendaraan order by kecamatan, merek asc limit 0,100");
@@ -39,7 +40,7 @@ $count = mysqli_num_rows($q_data);
             <div class="col-md-3">
                 <div class="form-group">
                   <select class="form-control" name="bulan" required>
-                    <option value="">&#8212;Pilih Bulan&#8212;</option>
+                    <option value="">&#8212;Pilih Bulan Awal&#8212;</option>
                     <?php
                     // KAMUS BULAN :D
                     $month = [
@@ -67,17 +68,36 @@ $count = mysqli_num_rows($q_data);
                 </div>
             </div>
             <div class="col-md-3">
-              <div class="form-group">
-                <select class="form-control" name="tahun" required>
-                  <option value="">&#8212;Pilih Tahun&#8212;</option>
-                  <?php
-                  $q_year = mysqli_query($conn, "select year(tgl_bayar) as tahun from tb_pemilik_kendaraan group by year(tgl_bayar)");
-                  while($r = mysqli_fetch_array($q_year)) { ?>
-                    <option value="<?php print $r['tahun']?>" <?php if ($tahun==$r['tahun']) { print $selected; } ?>><?php print $r['tahun']?></option>
-                  <?php } // TUTUP.WHILE $q_year ?>
-                </select>
-              </div>
+                <div class="form-group">
+                  <select class="form-control" name="bulan_end" required>
+                    <option value="">&#8212;Pilih Bulan Akhir&#8212;</option>
+                    <?php
+                    // KAMUS BULAN :D
+                    $month = [
+                      'Januari',
+                      'Februari',
+                      'Maret',
+                      'April',
+                      'Mei',
+                      'Juni',
+                      'Juli',
+                      'Agustus',
+                      'September',
+                      'Oktober',
+                      'November',
+                      'Desember',
+                    ];
+                    $q_bulan = mysqli_query($conn, "select month(tgl_bayar) as bulan from tb_pemilik_kendaraan group by month(tgl_bayar)");
+                    while($b = mysqli_fetch_array($q_bulan)) {
+                      $bln = (int)$b['bulan'];
+                      $bln = $bln - 1;
+                      $bln_str = (string)$bln;?>
+                      <option value="<?php print $b['bulan'] ?>" <?php if ($bulan==$b['bulan']) { print $selected; } ?>><?php print $month[$bln] ?></option>
+                    <?php } ?>
+                  </select>
+                </div>
             </div>
+            
             <div class="col-md-3">
               <div class="form-group">
                 <button type="submit" class="btn btn-biru" name="terapkan">Terapkan</button>

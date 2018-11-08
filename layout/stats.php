@@ -1,6 +1,7 @@
 <?php
 if (isset($_POST['terapkan'])) {
   $bulan = $_POST['bulan'];
+  $bulan_end = $_POST['bulan_end'];
   $tahun = $_POST['tahun'];
   $selected = "selected";
 
@@ -14,8 +15,8 @@ if (isset($_POST['terapkan'])) {
   // ***
   $q_max = mysqli_query($conn, "select a.nama, b.merek, count(merek) as jumlah from tb_peta a
                         inner join tb_pemilik_kendaraan b on a.nama=b.kecamatan
-                        where month(tgl_bayar)='$bulan' and
-                        year(tgl_bayar)='$tahun'
+                        where month(tgl_bayar) 
+                        between '$bulan' and '$bulan_end'
                         group by a.nama, b.merek
                         order by count(merek) desc limit 0,1");
   $peta = mysqli_fetch_array($q_max);
@@ -34,8 +35,8 @@ if (isset($_POST['terapkan'])) {
   //                   order by kecamatan, merek asc");
   $q_merek = mysqli_query($conn, "select a.nama, b.merek, count(merek) as jumlah from tb_peta a
                         inner join tb_pemilik_kendaraan b on a.nama=b.kecamatan
-                        where month(tgl_bayar)='$bulan' and
-                        year(tgl_bayar)='$tahun'
+                        where month(tgl_bayar) 
+                        between '$bulan' and '$bulan_end'
                         group by a.nama, b.merek
                         order by count(merek) desc");
   // END.FETCH.DATA.BULAN.TAHUN.
@@ -85,7 +86,7 @@ if (isset($_POST['terapkan'])) {
         <form action="" method="post">
           <div class="form-group">
             <select class="form-control" name="bulan" required>
-              <option value="">&#8212;Pilih Bulan&#8212;</option>
+              <option value="">&#8212;Pilih Bulan Awal&#8212;</option>
               <?php
               $month = [
                 'Januari',
@@ -108,30 +109,36 @@ if (isset($_POST['terapkan'])) {
                 $bln_str = (string)$bln;?>
                 <option value="<?php print $b['bulan'] ?>" <?php if ($bulan==$b['bulan']) { print $selected; } ?>><?php print $month[$bln] ?></option>
               <?php } ?>
-              <!--<option value="1" <?php if ($bulan=='1') { print $selected; } ?>>Januari</option>
-              <option value="2" <?php if ($bulan=='2') { print $selected; } ?>>Februari</option>
-              <option value="3" <?php if ($bulan=='3') { print $selected; } ?>>Maret</option>
-              <option value="4" <?php if ($bulan=='4') { print $selected; } ?>>April</option>
-              <option value="5" <?php if ($bulan=='5') { print $selected; } ?>>Mei</option>
-              <option value="6" <?php if ($bulan=='6') { print $selected; } ?>>Juni</option>
-              <option value="7" <?php if ($bulan=='7') { print $selected; } ?>>Juli</option>
-              <option value="8" <?php if ($bulan=='8') { print $selected; } ?>>Agustus</option>
-              <option value="9" <?php if ($bulan=='9') { print $selected; } ?>>September</option>
-              <option value="10" <?php if ($bulan=='10') { print $selected; } ?>>Oktober</option>
-              <option value="11" <?php if ($bulan=='11') { print $selected; } ?>>November</option>
-              <option value="12" <?php if ($bulan=='12') { print $selected; } ?>>December</option>-->
             </select>
           </div>
           <div class="form-group">
-            <select class="form-control" name="tahun" required>
-              <option value="">&#8212;Pilih Tahun&#8212;</option>
+            <select class="form-control" name="bulan_end" required>
+              <option value="">&#8212;Pilih Bulan Akhir&#8212;</option>
               <?php
-              $q_year = mysqli_query($conn, "select year(tgl_bayar) as tahun from tb_pemilik_kendaraan group by year(tgl_bayar)");
-              while($baris = mysqli_fetch_array($q_year)) { ?>
-                <option value="<?php print $baris['tahun']?>" <?php if ($tahun==$baris['tahun']) { print $selected; } ?>><?php print $baris['tahun']?></option>
+              $month = [
+                'Januari',
+                'Februari',
+                'Maret',
+                'April',
+                'Mei',
+                'Juni',
+                'Juli',
+                'Agustus',
+                'September',
+                'Oktober',
+                'November',
+                'Desember',
+              ];
+              $q_bulan = mysqli_query($conn, "select month(tgl_bayar) as bulan from tb_pemilik_kendaraan group by month(tgl_bayar)");
+              while($b = mysqli_fetch_array($q_bulan)) {
+                $bln = (int)$b['bulan'];
+                $bln = $bln - 1;
+                $bln_str = (string)$bln;?>
+                <option value="<?php print $b['bulan'] ?>" <?php if ($bulan==$b['bulan']) { print $selected; } ?>><?php print $month[$bln] ?></option>
               <?php } ?>
             </select>
           </div>
+          
           <div class="form-group">
             <button type="submit" class="btn btn-biru" name="terapkan">Terapkan</button>
           </div>
@@ -176,8 +183,8 @@ if (isset($_POST['terapkan'])) {
       <div class="content">
         <?php $q_conclusion = mysqli_query($conn, "select kecamatan, count(merek) as jml_unit from tb_pemilik_kendaraan
                                     where merek='TOYOTA' and
-                                    month(tgl_bayar)='$bulan' and
-                                    year(tgl_bayar)='$tahun'
+                                    month(tgl_bayar) 
+                                    between '$bulan' and '$bulan_end'
                                     group by kecamatan, merek
                                     order by count(merek) desc");
         $count = mysqli_num_rows($q_conclusion);
