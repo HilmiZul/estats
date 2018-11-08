@@ -148,36 +148,6 @@ if (isset($_POST['terapkan'])) {
         </form>
       </div>
     </div> <!-- TUTUP.CARD -->
-    <!-- <div class="card">
-      <div class="header">
-        <h4 class="title"><i class="fa fa-flag"></i> Dominan</h4>
-      </div>
-      <div class="content">
-      <?php
-      if ($dominan > 0) { ?>
-        <table class="table table-hover">
-          <thead>
-            <tr>
-              <th>KECAMATAN</th>
-              <th>MEREK</th>
-              <th>JUMLAH</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><?php print $peta['nama'] ?></td>
-              <td><?php print $peta['merek'] ?></td>
-              <td><?php print $peta['jumlah'] ?></td>
-            </tr>
-          </tbody>
-        </table>
-      <?php } else { ?>
-        <div class="alert alert-danger">
-          <em>Tidak ada data. Silahkan filter.</em>
-        </div>
-      <?php } ?>
-      </div>
-    </div> -->
 
     <div class="card">
       <div class="header">
