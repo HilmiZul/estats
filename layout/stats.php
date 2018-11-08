@@ -54,7 +54,9 @@ if (isset($_POST['terapkan'])) {
   $tahun = "";
   $selected = "";
   $result = true;
-} ?>
+} 
+
+?>
 <div class="row">
 
   <!-- STATS.MAP -->
@@ -88,20 +90,6 @@ if (isset($_POST['terapkan'])) {
             <select class="form-control" name="bulan" required>
               <option value="">&#8212;Pilih Bulan Awal&#8212;</option>
               <?php
-              $month = [
-                'Januari',
-                'Februari',
-                'Maret',
-                'April',
-                'Mei',
-                'Juni',
-                'Juli',
-                'Agustus',
-                'September',
-                'Oktober',
-                'November',
-                'Desember',
-              ];
               $q_bulan = mysqli_query($conn, "select month(tgl_bayar) as bulan from tb_pemilik_kendaraan group by month(tgl_bayar)");
               while($b = mysqli_fetch_array($q_bulan)) {
                 $bln = (int)$b['bulan'];
@@ -114,21 +102,7 @@ if (isset($_POST['terapkan'])) {
           <div class="form-group">
             <select class="form-control" name="bulan_end" required>
               <option value="">&#8212;Pilih Bulan Akhir&#8212;</option>
-              <?php
-              $month = [
-                'Januari',
-                'Februari',
-                'Maret',
-                'April',
-                'Mei',
-                'Juni',
-                'Juli',
-                'Agustus',
-                'September',
-                'Oktober',
-                'November',
-                'Desember',
-              ];
+              <?php            
               $q_bulan = mysqli_query($conn, "select month(tgl_bayar) as bulan from tb_pemilik_kendaraan group by month(tgl_bayar)");
               while($b = mysqli_fetch_array($q_bulan)) {
                 $bln = (int)$b['bulan'];
