@@ -141,6 +141,9 @@ if (isset($_POST['terapkan'])) {
           
           <div class="form-group">
             <button type="submit" class="btn btn-biru" name="terapkan">Terapkan</button>
+            <?php if (isset($_POST['terapkan'])) { ?>
+            <a onClick="window.print()" class="btn btn-danger"><i class="fa fa-print"></i> Cetak</a>
+            <?php } ?>
           </div>
         </form>
       </div>
