@@ -51,7 +51,7 @@ if (isset($_POST['terapkan'])) {
 } else {
   $q = mysqli_query($conn, "select * from tb_pemilik_kendaraan order by kecamatan, merek asc");
   $bulan = "";
-  $tahun = "";
+  $bulan_end = "";
   $selected = "";
   $result = true;
 } 
@@ -108,7 +108,7 @@ if (isset($_POST['terapkan'])) {
                 $bln = (int)$b['bulan'];
                 $bln = $bln - 1;
                 $bln_str = (string)$bln;?>
-                <option value="<?php print $b['bulan'] ?>" <?php if ($bulan==$b['bulan']) { print $selected; } ?>><?php print $month[$bln] ?></option>
+                <option value="<?php print $b['bulan'] ?>" <?php if ($bulan_end==$b['bulan']) { print $selected; } ?>><?php print $month[$bln] ?></option>
               <?php } ?>
             </select>
           </div>

@@ -16,7 +16,7 @@ if (isset($_POST['terapkan'])) {
 } else {
   $q = mysqli_query($conn, "select * from tb_pemilik_kendaraan order by kecamatan, merek asc limit 0,100");
   $bulan = "";
-  $tahun = "";
+  $bulan_end = "";
   $selected = "";
 }
 
@@ -42,21 +42,6 @@ $count = mysqli_num_rows($q_data);
                   <select class="form-control" name="bulan" required>
                     <option value="">&#8212;Pilih Bulan Awal&#8212;</option>
                     <?php
-                    // KAMUS BULAN :D
-                    $month = [
-                      'Januari',
-                      'Februari',
-                      'Maret',
-                      'April',
-                      'Mei',
-                      'Juni',
-                      'Juli',
-                      'Agustus',
-                      'September',
-                      'Oktober',
-                      'November',
-                      'Desember',
-                    ];
                     $q_bulan = mysqli_query($conn, "select month(tgl_bayar) as bulan from tb_pemilik_kendaraan group by month(tgl_bayar)");
                     while($b = mysqli_fetch_array($q_bulan)) {
                       $bln = (int)$b['bulan'];
@@ -72,49 +57,36 @@ $count = mysqli_num_rows($q_data);
                   <select class="form-control" name="bulan_end" required>
                     <option value="">&#8212;Pilih Bulan Akhir&#8212;</option>
                     <?php
-                    // KAMUS BULAN :D
-                    $month = [
-                      'Januari',
-                      'Februari',
-                      'Maret',
-                      'April',
-                      'Mei',
-                      'Juni',
-                      'Juli',
-                      'Agustus',
-                      'September',
-                      'Oktober',
-                      'November',
-                      'Desember',
-                    ];
                     $q_bulan = mysqli_query($conn, "select month(tgl_bayar) as bulan from tb_pemilik_kendaraan group by month(tgl_bayar)");
                     while($b = mysqli_fetch_array($q_bulan)) {
                       $bln = (int)$b['bulan'];
                       $bln = $bln - 1;
                       $bln_str = (string)$bln;?>
-                      <option value="<?php print $b['bulan'] ?>" <?php if ($bulan==$b['bulan']) { print $selected; } ?>><?php print $month[$bln] ?></option>
+                      <option value="<?php print $b['bulan'] ?>" <?php if ($bulan_end==$b['bulan']) { print $selected; } ?>><?php print $month[$bln] ?></option>
                     <?php } ?>
                   </select>
                 </div>
             </div>
             
-            <div class="col-md-3">
+            <div class="col-md-4">
               <div class="form-group">
                 <button type="submit" class="btn btn-biru" name="terapkan">Terapkan</button>
+                <button type="button" data-toggle="modal" data-target="#impor" class="btn btn-success">
+                  <i class="ti-import"></i> Import
+                </button>
+                <a href="layout/pemilik-kendaraan-export.php?bulan=#&bulan_end=#" class="btn btn-info">
+                  <i class="ti-export"></i> Export
+                </a>
               </div>
             </div>
           </form>
-          <div class="col-md-3">
-
+          
+          <div class="col-md-2">
             <?php if ($count > 0) { ?>
             <button type="button" data-toggle="modal" data-target="#clear-data" class="btn btn-danger pull-right">
               <i class="fa fa-trash-o"></i>
             </button>
             <?php } ?>
-
-            <button type="button" data-toggle="modal" data-target="#impor" class="btn btn-success pull-right">
-              <i class="ti-import"></i> Import .XLS
-            </button>
           </div>
         </div>
       </div>
