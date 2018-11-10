@@ -74,9 +74,9 @@ $count = mysqli_num_rows($q_data);
                 <button type="button" data-toggle="modal" data-target="#impor" class="btn btn-success">
                   <i class="ti-import"></i> Import
                 </button>
-                <a href="layout/pemilik-kendaraan-export.php?bulan=#&bulan_end=#" class="btn btn-info">
+                <!-- <a href="layout/pemilik-kendaraan-export.php?bulan=#&bulan_end=#" class="btn btn-info">
                   <i class="ti-export"></i> Export
-                </a>
+                </a> -->
               </div>
             </div>
           </form>
