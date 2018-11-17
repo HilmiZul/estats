@@ -27,9 +27,12 @@ if (!empty($_GET['kecamatan']) && !empty($_GET['bulan']) && !empty($_GET['bulan_
   // DARI VARIABEL $month :P
   $bln = (int)$bulan;
   $bln = $bln - 1;
+  
+  $bln_end = (int)$bulan_end;
+  $bln_end = $bln_end - 1;
 
   header("Content-type:  application/vnd-ms-excel");
-  header("Content-Disposition: attachment; filename=$kec-$month[$bln]-$tahun.xls");
+  header("Content-Disposition: attachment; filename=$kec-$month[$bln]-$month[$bln_end].xls");
 
   $selected = "selected";
   $q = mysqli_query($conn, "select * from tb_pemilik_kendaraan
