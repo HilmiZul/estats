@@ -26,7 +26,7 @@ if ($_GET['detil'] == 'true') {
         </a>
         <?php
         if ($count > 0) { ?>
-          <a href="layout/stats-detil-export.php?kecamatan=<?php print $_GET['kecamatan']?>&bulan=<?php print $_GET['bulan']?>&tahun=<?php print $_GET['tahun']?>" class="btn btn-success">
+          <a href="layout/stats-detil-export.php?kecamatan=<?php print $_GET['kecamatan']?>&bulan=<?php print $_GET['bulan']?>&bulan_end=<?php print $_GET['bulan_end']?>" class="btn btn-success">
             <i class="ti-export"></i> Expor .XLS
           </a>
         <?php } ?>
