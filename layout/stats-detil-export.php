@@ -1,21 +1,7 @@
 <?php
 if (!empty($_GET['kecamatan']) && !empty($_GET['bulan']) && !empty($_GET['bulan_end'])) {
   include '../smpro-con.php';
-  // KAMUS BULAN :D
-  $month = [
-    'Januari',
-    'Februari',
-    'Maret',
-    'April',
-    'Mei',
-    'Juni',
-    'Juli',
-    'Agustus',
-    'September',
-    'Oktober',
-    'November',
-    'Desember',
-  ];
+  include 'kamus-bulan.php';
 
   $bulan = $_GET['bulan'];
   $bulan_end = $_GET['bulan_end'];
