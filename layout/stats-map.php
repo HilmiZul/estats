@@ -33,15 +33,7 @@
             while ($b = mysqli_fetch_array($q_merek)) {
               array_push($rank, $b['merek']);
               if (in_array('TOYOTA', $rank) == true) {
-                if ((count($rank) > 0) && (count($rank) <= 2)) {
-                  if ($rank[0] == "TOYOTA") {
-                    # WARNA IJO UNTUK URUTAN PERTAMA
-                    $fill = "rgba(70, 255, 70, .5)";
-                  } else {
-                    # WARNA MERAH UNTUK URUTAN TERAKHIR dan KEDUA TERAKHIR
-                    $fill = "rgba(200, 30, 30, .4)";
-                  }
-                } elseif ((count($rank) > 0) && (count($rank) <= 3)) {
+                if (count($rank) > 0) {
                   if ($rank[0] == "TOYOTA") {
                     # WARNA IJO UNTUK URUTAN PERTAMA
                     $fill = "rgba(70, 255, 70, .5)";
@@ -52,32 +44,7 @@
                     # WARNA MERAH UNTUK URUTAN TERAKHIR dan KEDUA TERAKHIR
                     $fill = "rgba(200, 30, 30, .4)";
                   }
-                } elseif ((count($rank) > 0) && (count($rank) <= 4)) {
-                  if ($rank[0] == "TOYOTA") {
-                    # WARNA IJO UNTUK URUTAN PERTAMA
-                    $fill = "rgba(70, 255, 70, .5)";
-                  } elseif (($rank[1] == "TOYOTA") ||
-                            ($rank[2] == "TOYOTA")) {
-                    # WARNA KUNING UNTUK URUTAN DIANTARA PERTAMA DAN TERAKHIR
-                    $fill = "rgba(200, 255, 70, .5)";
-                  } else {
-                    # WARNA MERAH UNTUK URUTAN TERAKHIR dan KEDUA TERAKHIR
-                    $fill = "rgba(200, 30, 30, .4)";
-                  }
-                } elseif ((count($rank) > 0) && (count($rank) <= 5)) {
-                  if ($rank[0] == "TOYOTA") {
-                    # WARNA IJO UNTUK URUTAN PERTAMA
-                    $fill = "rgba(70, 255, 70, .5)";
-                  } elseif (($rank[1] == "TOYOTA") ||
-                            ($rank[2] == "TOYOTA") ||
-                            ($rank[3] == "TOYOTA")) {
-                    # WARNA KUNING UNTUK URUTAN DIANTARA PERTAMA DAN TERAKHIR
-                    $fill = "rgba(200, 255, 70, .5)";
-                  } else {
-                    # WARNA MERAH UNTUK URUTAN TERAKHIR dan KEDUA TERAKHIR
-                    $fill = "rgba(200, 30, 30, .4)";
-                  }
-                }
+                } 
               } else {
                 # KALAU DATA KENDARAAN DI KECAMATAN LEBIH DARI 5
                 # APAKAH AKAN DIANGGAP GA ADA?
