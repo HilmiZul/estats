@@ -35,9 +35,9 @@ if (isset($_POST['upload'])) {
       $tgl_bayar = date_format($tgl_bayar, 'Ymd');
 
       $query = "INSERT INTO tb_pemilik_kendaraan  VALUES (
-                null, '$no_pol', $plat, '$nama_pemilik',
-                '$alamat_pemilik', '$kecamatan', 'KARAWANG', '$jenis',
-                '$merek', '$model_type', $tahun, '$tgl_bayar'
+                null, \"$no_pol\", $plat, \"$nama_pemilik\",
+                \"$alamat_pemilik\", \"$kecamatan\", \"KARAWANG\", \"$jenis\",
+                \"$merek\", \"$model_type\", $tahun, $tgl_bayar
               )";
       mysqli_query($conn, $query);
     }
