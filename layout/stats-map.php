@@ -15,13 +15,14 @@
         <!-- PAKISJAYA -->
         <!--<a  data-tooltip-content="#PAKISJAYA">-->
 
-        <?php
+        <?php 
         // LOOP.PETA
         // FETCH.DATA.PETA.DAN.SIMPAN KE XML/SVG
         $q_peta = mysqli_query($conn, "select * from tb_peta order by pid asc");
         $i = 0;
         while($r = mysqli_fetch_array($q_peta)) {
           $rank = [];
+          $persen = [];
           $q_merek = mysqli_query($conn, "select kecamatan, merek, count(merek) as jml_unit from tb_pemilik_kendaraan
                          where kecamatan='".$r['nama']."' and
                          month(tgl_bayar) 
@@ -29,18 +30,40 @@
                          group by merek
                          order by jml_unit desc");
           $count = mysqli_num_rows($q_merek);
+
+          // CARI JUMLAH KENDARAAN DI KECAMATAN TERTENTU.
+          $q_count_merek = mysqli_query($conn, "select count(merek) as jumlah from tb_pemilik_kendaraan where kecamatan='".$r['nama']."'");
+
+          // FETCH DATANYA UNTUK DIAMBIL JUMLAHNYA DARI ARRAY.
+          $c = mysqli_fetch_array($q_count_merek);
+          
           if ($count > 0) {
             while ($b = mysqli_fetch_array($q_merek)) {
+              $prosentase = ($b['jml_unit']/$c['jumlah']) * 100;
+              $prosentase = round($prosentase, 2); // DUA ANGKA DIBELAKANG KOMA. :D
+              // print $b['kecamatan']. ":".$b['merek']."=".$prosentase."<br>";
+              array_push($persen, $prosentase);
               array_push($rank, $b['merek']);
               if (in_array('TOYOTA', $rank) == true) {
                 if (count($rank) > 0) {
                   if ($rank[0] == "TOYOTA") {
                     # WARNA IJO UNTUK URUTAN PERTAMA
-                    $fill = "rgba(70, 255, 70, .5)";
-                  } elseif ($rank[1] == "TOYOTA") {
-                    # WARNA KUNING UNTUK URUTAN DIANTARA PERTAMA DAN TERAKHIR
-                    $fill = "rgba(200, 255, 70, .5)";
-                  } else {
+                    $persen_banding = $persen[0] - $persen[1];
+                    if ($persen_banding > 5) {
+                      $fill = "rgba(70, 255, 70, .5)";
+                    } elseif ($persen_banding < 5) {
+                      $fill = "rgba(200, 255, 70, .5)";
+                    }
+                    // print $b['kecamatan'].":".$b['merek']." = ".$persen[0]."<br>";
+                  } 
+                  // elseif ($rank[1] == "TOYOTA") {
+                  //   # WARNA KUNING UNTUK URUTAN DIANTARA PERTAMA DAN TERAKHIR
+                  //   $persen[0] = $persen[0] - $persen[1];
+                  //   if ($persen[0] < 11) {
+                  //     $fill = "rgba(200, 255, 70, .5)";
+                  //   }
+                  // } 
+                  else {
                     # WARNA MERAH UNTUK URUTAN TERAKHIR dan KEDUA TERAKHIR
                     $fill = "rgba(200, 30, 30, .4)";
                   }
