@@ -1,43 +1,3 @@
-<!--<div class="row">
-    <div class="col-lg-6 col-sm-6">
-        <div class="card">
-            <div class="content">
-                <div class="row">
-                    <div class="col-xs-5">
-                        <div class="icon-big icon-warning text-center">
-                            <i class="ti-map"></i>
-                        </div>
-                    </div>
-                    <div class="col-xs-7">
-                        <div class="numbers">
-                            <p>Wilayah</p>
-                            30 Kecamatan
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="col-lg-6 col-sm-6">
-        <div class="card">
-            <div class="content">
-                <div class="row">
-                    <div class="col-xs-5">
-                        <div class="icon-big icon-danger text-center">
-                            <i class="ti-car"></i>
-                        </div>
-                    </div>
-                    <div class="col-xs-7">
-                        <div class="numbers">
-                            <p>Kendaraan</p>
-                            >7 Merek
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>-->
 <div class="row">
   <div class="col-md-12">
     <div class="alert alert-grey">
@@ -45,11 +5,12 @@
     </div>
   </div>
 </div>
+
 <div class="row">
   <div class="col-md-6">
     <div class="card ">
       <div class="header">
-        <h3 class="title"><i class="ti ti-import"></i> Impor Cepat</h3>
+        <h3 class="title"><i class="ti ti-import"></i> Impor</h3>
       </div>
       <div class="content">
         <div class="alert alert-grey">Impor Data Pemilik Kendaraan dari berkas <strong>.XLS</strong></div>
