@@ -1,4 +1,4 @@
 <?php
 session_start();
 session_destroy();
-header('Location: index.php');
+print "<meta http-equiv='refresh' content='0; url=?nav=masuk'>";

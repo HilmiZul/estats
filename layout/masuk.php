@@ -14,7 +14,8 @@ if (isset($_POST['masuk'])) {
     $_SESSION['fullname'] = $sesi['fullname'];
     $_SESSION['role'] = $sesi['role'];
 
-    header('Location: ?nav=dashboard');
+    // header('Location: ?nav=dashboard');
+    print "<meta http-equiv='refresh' content='0; url=?nav=dashboard'>";
   } else {
     $msg = "<div class='alert alert-danger'>Username dan Password tidak cocok.</div>";
   }
